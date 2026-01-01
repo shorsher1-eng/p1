@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>מערכת הובלות</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>מערכת להצעות מחיר והובלות</h1>
+      <p>ניהול הצעות מחיר ללקוחות ואישור הובלות לבעלי העסק.</p>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-button active" data-tab="client">צד הלקוח</button>
+      <button class="tab-button" data-tab="business">צד בעל העסק</button>
+    </nav>
+
+    <main>
+      <section id="client" class="tab-content active">
+        <div class="panel">
+          <h2>פרטי לקוח והובלה</h2>
+          <form id="client-form">
+            <div class="form-grid">
+              <label>
+                שם מלא
+                <input type="text" name="customerName" required />
+              </label>
+              <label>
+                טלפון
+                <input type="tel" name="customerPhone" placeholder="05X-XXXXXXX" required />
+              </label>
+              <label>
+                נקודת התחלה
+                <input type="text" name="startPoint" required />
+              </label>
+              <label>
+                נקודת סיום
+                <input type="text" name="endPoint" required />
+              </label>
+              <label>
+                תאריך הובלה
+                <input type="date" name="moveDate" required />
+              </label>
+              <label>
+                מרחק בק"מ
+                <input type="number" name="distanceKm" min="1" step="1" required />
+              </label>
+            </div>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h2>בחירת פריטים (תצוגת עץ)</h2>
+          <p class="hint">בחרו את הפריטים להובלה. פריטים דומים בגדלים שונים מופיעים בנפרד.</p>
+          <div id="item-tree"></div>
+        </div>
+
+        <div class="panel">
+          <h2>סיכום הצעת המחיר</h2>
+          <div id="quote-summary" class="summary"></div>
+          <button id="submit-quote" class="primary">אישור הצעת מחיר</button>
+          <p id="client-message" class="message"></p>
+        </div>
+
+        <div class="panel">
+          <h2>סטטוס ההובלות שלי</h2>
+          <p class="hint">המערכת תציג התראות על הובלות שאושרו לאחר שמספר הטלפון הוזן.</p>
+          <div id="client-shipments"></div>
+        </div>
+      </section>
+
+      <section id="business" class="tab-content">
+        <div class="panel">
+          <h2>דשבורד בעל העסק</h2>
+          <div class="stats">
+            <div>
+              <span class="stat-label">הובלות שבוצעו</span>
+              <span id="stat-approved" class="stat-value">0</span>
+            </div>
+            <div>
+              <span class="stat-label">הובלות שלא בוצעו</span>
+              <span id="stat-rejected" class="stat-value">0</span>
+            </div>
+            <div>
+              <span class="stat-label">הובלות בהמתנה</span>
+              <span id="stat-pending" class="stat-value">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>תעריפי הובלה לכל פריט (עלות לק"מ)</h2>
+          <form id="rate-form">
+            <div id="rate-table"></div>
+            <button type="submit" class="secondary">שמור תעריפים</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h2>הובלות בהמתנה לאישור</h2>
+          <div id="pending-shipments"></div>
+        </div>
+
+        <div class="panel">
+          <h2>לוח שנה להובלות שאושרו</h2>
+          <div id="approved-calendar"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>כל הנתונים נשמרים בדפדפן לצורך הדגמה.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
